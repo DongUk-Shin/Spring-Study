@@ -3,13 +3,17 @@ package kim.kimspirng.service;
 import kim.kimspirng.domain.Member;
 import kim.kimspirng.repository.MemberRepository;
 import kim.kimspirng.repository.MemoryMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service //컨테이너에 멤버서비스 등록이 된다
 public class MemberService {
     private final MemberRepository memberRepository;
 
+    @Autowired //객체가 생성될 때 컨테이너에 있는 객체를 가져옴
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }

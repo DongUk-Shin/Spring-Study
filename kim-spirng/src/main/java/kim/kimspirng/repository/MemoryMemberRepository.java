@@ -1,9 +1,11 @@
 package kim.kimspirng.repository;
 
 import kim.kimspirng.domain.Member;
+import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
+@Repository //컨테이너에 리포지토리 등록
 public class MemoryMemberRepository implements MemberRepository {
 
     private static Map<Long, Member> store = new HashMap<>();
