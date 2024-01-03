@@ -5,21 +5,23 @@ import kim.kimspirng.repository.MemberRepository;
 import kim.kimspirng.repository.MemoryMemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
-
-@Service //컨테이너에 멤버서비스 등록이 된다
+@Transactional
+//@Service //컨테이너에 멤버서비스 등록이 된다
 public class MemberService {
     private final MemberRepository memberRepository;
 
-    @Autowired //객체가 생성될 때 컨테이너에 있는 객체를 가져옴
+    //@Autowired //객체가 생성될 때 컨테이너에 있는 객체를 가져옴
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
     /**
      * 회원가입
      */
+
     public Long join(Member member) {
         //이름이 중복 되면 안됨
         validateDuplicateMember(member); // 메서드로 뺌
