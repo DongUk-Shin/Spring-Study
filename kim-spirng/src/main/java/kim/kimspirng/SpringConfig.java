@@ -1,5 +1,6 @@
 package kim.kimspirng;
 
+import kim.kimspirng.aop.TimeTraceAop;
 import kim.kimspirng.repository.JpaMemberRepository;
 import kim.kimspirng.repository.MemberRepository;
 import kim.kimspirng.repository.MemoryMemberRepository;
@@ -39,6 +40,14 @@ public class SpringConfig {
         //return new MemoryMemberRepository();
         //return new JpaMemberRepository(em);
 
+    }
+     */
+
+    /*
+    Aop 빈 등록 (연재 코드에서는 @Component사용
+    @Bean
+    public TimeTraceAop timeTraceAop() {
+        return new TimeTraceAop();
     }
      */
 }
