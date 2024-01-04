@@ -44,7 +44,7 @@ public class SpringConfig {
      */
 
     /*
-    Aop 빈 등록 (연재 코드에서는 @Component사용
+    Aop 빈 등록 (현재 코드에서는 @Component사용
     @Bean
     public TimeTraceAop timeTraceAop() {
         return new TimeTraceAop();
