@@ -45,6 +45,7 @@ public class ApplicationContextExtendsFindTest {
         public DiscountPolicy fixDiscountPolicy() {
             return new FixDiscountPolicy();
         }
+
         @Bean
         public DiscountPolicy rateDiscountPolicy() {
             return new RateDiscountPolicy();
