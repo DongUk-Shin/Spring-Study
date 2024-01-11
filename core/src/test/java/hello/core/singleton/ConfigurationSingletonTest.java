@@ -39,8 +39,14 @@ public class ConfigurationSingletonTest {
     void configurationDeep() {
         ApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
         AppConfig bean = ac.getBean(AppConfig.class);
-        System.out.println("bean = " + bean.getClass());
-        //bean = class hello.core.AppConfig$$SpringCGLIB$$0
+        System.out.println("bean = " + bean.getClass()); //bean = class hello.core.AppConfig$$SpringCGLIB$$0
+        /*
+        CGLIB
+        if memoryMemberRepository가 이미 스프링 컨테이너에 등록되어 있으면
+            return 스프링 컨테이너에 찾아서 반환
+        else
+            스프링 컨테이너에 등록
+         */
 
     }
 }
