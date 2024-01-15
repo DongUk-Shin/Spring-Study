@@ -17,9 +17,9 @@ public class AutoWiredTest {
     }
 
 
-    /*
+/*
     빨간 줄 뜨는게 정상 Member는 스프링 빈이 아니다
-     */
+*/
     static class TestBean {
         //호출 안됨, 의존 관계가 없으면 메서드가 아예 호출이 안 된다
         @Autowired(required = false)
