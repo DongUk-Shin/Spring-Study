@@ -18,7 +18,8 @@ public class BeanLifeCycleTest {
 
     @Configuration
     static class LifeCycleConfig {
-        @Bean
+
+        @Bean(initMethod = "init", destroyMethod = "close") //설정 정보에 초기화 소멸 메서드 지정
         public NetworkClient networkClient() {
             NetworkClient networkClient = new NetworkClient();
             networkClient.setUrl("https://www.naver.com/");
