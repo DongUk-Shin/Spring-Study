@@ -8,10 +8,10 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class LogDemoService {
-    private final ObjectProvider<MyLogger> myLoggerProvider; //빈의 생성을 지연
-
+    //private final ObjectProvider<MyLogger> myLoggerProvider; //빈의 생성을 지연
+    private final MyLogger myLogger;
     public void logic(String id) {
-        MyLogger myLogger = myLoggerProvider.getObject();  //빈의 생성을 지연
+        //MyLogger myLogger = myLoggerProvider.getObject();  //빈의 생성을 지연
         myLogger.log("service id = " + id);
     }
 }
