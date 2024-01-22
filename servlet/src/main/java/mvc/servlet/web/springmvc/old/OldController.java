@@ -26,6 +26,12 @@ public class OldController implements Controller {
     @Override
     public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
         System.out.println("OldController.handleRequest");
-        return null;
+        return new ModelAndView("new-form"); //논리적인 이름이기에 뷰 리졸버가 있어야 함
     }
+
+    /*
+    스프링부트에서 제공한다 application.properties 에서 설정 할 수 있음
+    spring.mvc.view.prefix=/WEB-INF/views/
+    spring.mvc.view.suffix=.jsp
+     */
 }
