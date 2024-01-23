@@ -15,13 +15,16 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.Objects;
 
+
+/**
+ * 쿼리 파라미터 조회 GET 쿼리 파라미터, HTML form
+ * HTTP Message Body는 아님
+ */
 @Slf4j
 @Controller
 public class RequestParamController {
 
-    /**
-     * 쿼리 파라미터 조회 GET 쿼리 파라미터, HTML form
-     */
+    
     @RequestMapping("/request-param-v1")
     public void requestParamV1(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String username = request.getParameter("username");
