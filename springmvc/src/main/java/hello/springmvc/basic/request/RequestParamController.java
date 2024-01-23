@@ -1,10 +1,12 @@
 package hello.springmvc.basic.request;
 
+import hello.springmvc.basic.HelloData;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.MultiValueMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -73,7 +75,7 @@ public class RequestParamController {
     @ResponseBody
     @RequestMapping("/request-param-required")
     public String requestParamRequired(@RequestParam(required = true) String username,
-                                 @RequestParam(required = false) Integer age) {
+                                       @RequestParam(required = false) Integer age) {
 
         log.info("username= {}, age= {}", username, age);
         return "ok";
@@ -85,7 +87,7 @@ public class RequestParamController {
     @ResponseBody
     @RequestMapping("/request-param-default")
     public String requestParamDefault(@RequestParam(required = true, defaultValue = "guest") String username,
-                                       @RequestParam(required = false, defaultValue = "-1")  int age) {
+                                      @RequestParam(required = false, defaultValue = "-1") int age) {
 
         log.info("username= {}, age= {}", username, age);
         return "ok";
@@ -101,4 +103,29 @@ public class RequestParamController {
         log.info("username= {}, age= {}", paramMap.get("username"), paramMap.get("age"));
         return "ok";
     }
+
+
+    /**
+     * ModelAttribute 얘가 자동으로 해줌
+     * 객체의 프로퍼티를 찾고 ,Setter 까지 해줌 미친 기능
+     */
+    @ResponseBody
+    @RequestMapping("/model-attribute-v1")
+    public String modelAttributeV1(@ModelAttribute HelloData helloData) {
+        log.info("username= {}, age= {}", helloData.getUsername(), helloData.getAge());
+        return "ok";
+    }
+
+    /**
+     * @ModelAttribute 생략 가능
+     * String, int 같은 단순 타입 생략 = @RequestParam
+     * argument resolver 로 지정해둔 타입 외 생략 = @ModelAttribute
+     */
+    @ResponseBody
+    @RequestMapping("/model-attribute-v2")
+    public String modelAttributeV2(HelloData helloData) {
+        log.info("username= {}, age= {}", helloData.getUsername(), helloData.getAge());
+        return "ok";
+    }
+
 }
