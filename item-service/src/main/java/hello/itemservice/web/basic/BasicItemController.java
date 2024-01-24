@@ -37,10 +37,36 @@ public class BasicItemController {
         return "basic/addForm";
     }
 
-    @PostMapping("/add")
-    public String save(@ModelAttribute Item item) {
+   // @PostMapping("/add") 밑에 꺼랑 중복임
+    public String addItemV1(@RequestParam String itemName,
+                            @RequestParam int price,
+                            @RequestParam int quantity,
+                            Model model) {
+        Item item = new Item(itemName, price, quantity);
         itemRepository.save(item);
-        return "basic/addForm";
+        model.addAttribute("item", item);
+        return "basic/item";
+    }
+
+    //@PostMapping("/add") 밑에 꺼랑 중복임
+    public String addItemV2(@ModelAttribute("item") Item item, Model model) {
+        itemRepository.save(item);
+        //model.addAttribute("item", item);  @ModelAttribute의 기능으로 자동으로 model 에 넣어줌
+        return "basic/item";
+    }
+    
+    //@ModelAttribute 가 달려 있는 클래스 명을 따와서 모델에 등록해줌
+    //@PostMapping("/add") 밑에 꺼랑 중복임
+    public String addItemV3(@ModelAttribute Item item) {
+        itemRepository.save(item);
+        return "basic/item";
+    }
+
+    //@ModelAttribute 까지 생략 가능
+    @PostMapping("/add")
+    public String addItemV4(Item item) {
+        itemRepository.save(item);
+        return "basic/item";
     }
 
 
